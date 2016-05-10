@@ -1,0 +1,53 @@
+* {
+	margin: auto;
+}
+
+
+body {
+	text-align: center;
+	margin-top: 20px;
+}
+
+#code {
+	width: 500;
+	height: 150;
+}
+
+td {
+	width: 50;
+	background-color: tan;
+	border: 2px solid black;
+}
+
+.selected {
+	background-color: red;
+}
+
+#code {
+	background-color: #3333FF;
+	color: white;
+}
+
+#instruct {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	width: 230px;
+	text-align: left;
+}
+
+#challenge {
+	position: absolute;
+	left: 20px;
+	top: 315px;
+	width: 230px;
+	text-align: left;
+}
+
+#credit {
+	position: absolute;
+	left: 20px;
+	top: 230px;
+	width: 230px;
+	text-align: left;
+}
