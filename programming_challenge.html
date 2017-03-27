@@ -1,14 +1,8 @@
 <html>
 <body>
 
-<h1> PROGRAMMING CHALLENGE </h1>
-<br>
-<textarea id = "code" placeholder = "Enter Code Here"></textarea><br><br>
-<button id = "execute">Execute Code</button><br><br>
-<table><tr id = "row">
-</tr></table>
 
-
+<div id = "sidebar">
 <fieldset id = "instruct">
 <p> You have 6 symbols: </p>
 <p> <b>+</b> Increment highlighted Value</p>
@@ -17,6 +11,7 @@
 <p> < Move Pointer Left</p>
 <p> [ Begin Loop </p>
 <p> ] Go to the correspoding begin statement if the highlighted value is not 0</p>
+<p> In addition, you can use . for debugging to print the current cell and value. </p>
 <p> Other characters are ignored</p>
 </fieldset>
 
@@ -36,6 +31,21 @@
 <p> Created by George Spahn </p>
 <p> Based on Brainfuck by Urban Muller </p>
 </fieldset>
+</div>
+
+<div id = "content">
+
+<h1> PROGRAMMING CHALLENGE </h1>
+<br>
+<textarea id = "code" placeholder = "Enter Code Here"></textarea><br><br>
+<button id = "execute">Execute Code</button>
+<button id = "clear">Clear Output</button>
+<br><br>
+<table><tr id = "row">
+</tr></table>
+<div id = "output"></div>
+
+</div>
 
 <script src="jquery-2.1.1.js"></script>
 <script src="main.js"></script>

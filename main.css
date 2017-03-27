@@ -1,11 +1,16 @@
 * {
-	margin: auto;
+	box-sizing: border-box;
+	margin: 0 0;
 }
 
 
-body {
+#content {
+	display:inline-block;
+	vertical-align: top;
 	text-align: center;
 	margin-top: 20px;
+	margin-left: 310px;
+	width: 500px;
 }
 
 #code {
@@ -28,26 +33,7 @@ td {
 	color: white;
 }
 
-#instruct {
-	position: absolute;
-	left: 20px;
-	top: 20px;
-	width: 230px;
-	text-align: left;
-}
-
-#challenge {
-	position: absolute;
-	left: 20px;
-	top: 315px;
-	width: 230px;
-	text-align: left;
-}
-
-#credit {
-	position: absolute;
-	left: 20px;
-	top: 230px;
-	width: 230px;
-	text-align: left;
+#sidebar {
+	display: inline-block;
+	width: 300px;
 }
