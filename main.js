@@ -6,8 +6,6 @@ $("p").on('click', function(e){
 var cells = [];
 var numCells = 9;
 var pointer;
-var stack = [];
-var runtime = 0;
 
 function resetCells() {
 	pointer = Math.floor(numCells/2);
@@ -39,15 +37,37 @@ function length(input) {
 }
 
 function processCode(input) {
-	runtime = 0;
+	var print = (...a) => { $('#output').prepend('<br>' + a.join('')); }
+	var runtime = 0;
+	var stack = [];
+	var inComment = false;
+	var numPrinted = 0;
+	var printIfOutputIgnored = () => { if (numPrinted > 100) {
+		print(numPrinted, " lines of output not shown"); }}
 	for (var loc = 0; loc <input.length; loc++) {
 		runtime++;
-		if (runtime > 1000000000) {
-			$("table").after("<br>Runtime Limit Exceeded ("
-				+ length(input) + " characters)");
+		if (runtime > 10000000) {
+			printIfOutputIgnored();
+			print("Runtime Limit Exceeded (", runtime, " steps)");
 			return;
 		}
-		switch(input.charAt(loc)) {
+		var c = input.charAt(loc);
+		if (inComment) {
+			if (c == '\n') {
+				inComment = false;
+			}
+			continue;
+		}
+		switch (c) {
+			case '#':
+				inComment = true;
+				break;
+			case '.':
+				numPrinted++;
+				if (numPrinted <= 100) {
+					print("Output (cell ", pointer, "): ", cells[pointer]);
+				}
+				break;
 			case '+':
 				cells[pointer]++;
 				break;
@@ -65,7 +85,8 @@ function processCode(input) {
 				break;
 			case ']':
 				if (stack.length == 0) {
-					$("table").after("<br>Missing a \"[\"");
+					printIfOutputIgnored();
+					print("Missing a \"[\"");
 					return;
 				}
 				var prev = stack[stack.length - 1];
@@ -77,8 +98,9 @@ function processCode(input) {
 				break;
 		}
 	}
-	$("table").after("<br>You created <b>" + cells[pointer] 
-		+ "</b> using a total of <b>" + length(input) + "</b> characters!");
+	printIfOutputIgnored();
+	print("You created <b>", cells[pointer],
+		  "</b> using a total of <b>", length(input), "</b> characters!");
 
 }
 
@@ -94,6 +116,7 @@ $(document).ready(function(){
 	$("#clear").click(function() {
 		resetCells();
 		displayCells();
+		$('#output').html('');
 	});
 
 	$("#execute").click( function() {
@@ -102,4 +125,7 @@ $(document).ready(function(){
 		displayCells();
 	});
 
+	code.addEventListener('input', (ev) => {
+		$('#chars').html(code.value.length);
+	});
 });
