@@ -125,4 +125,7 @@ $(document).ready(function(){
 		displayCells();
 	});
 
+	code.addEventListener('input', (ev) => {
+		$('#chars').html(code.value.length);
+	});
 });
