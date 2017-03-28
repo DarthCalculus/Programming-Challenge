@@ -1,25 +1,39 @@
 * {
 	box-sizing: border-box;
-	margin: 0 0;
 }
 
+ul, ol, h1, h2, h3, p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+h3:first-child {
+	margin-top: 0;
+}
+p:last-child {
+	margin-bottom: 0;
+}
+fieldset {
+	margin: 10px;
+}
 
+body {
+	display: flex;
+}
 #content {
-	display:inline-block;
-	vertical-align: top;
 	text-align: center;
 	margin-top: 20px;
-	margin-left: 310px;
-	width: 500px;
+	width: 70%;
 }
 
 #code {
-	width: 500;
+	width: 100%;
 	height: 150;
 }
 
+table {
+	width: 100%;
+}
 td {
-	width: 50;
 	background-color: tan;
 	border: 2px solid black;
 }
@@ -34,6 +48,5 @@ td {
 }
 
 #sidebar {
-	display: inline-block;
-	width: 300px;
+	width: 30%;
 }
